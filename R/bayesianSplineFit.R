@@ -707,11 +707,12 @@ moveKnot.binary <- function(model.options, knots.previous, knots.positions.candi
   
   if (length(potentialLocations) > 0) {
     # pick a new location
-    p <- sample(potentialLocations,1)
+    if(length(potentialLocations)==1){p<-potentialLocations
+    }else{p <- sample(potentialLocations,1)}
     # get the new knots
     knots.star <- sort(c(knotsToKeep, p))
     # get the potential locations we could move back to, from the proposed knot positions
-    potentialLocations = knots.positions.candidate[! knots.positions.candidate %in% knots.star]
+    potentialLocations.star = knots.positions.candidate[! knots.positions.candidate %in% knots.star]
     potentialLocations.star <- potentialLocations[potentialLocations > (p - knots.stepSize) & 
                                                     potentialLocations < (p + knots.stepSize)] 
     
@@ -807,7 +808,7 @@ moveKnot.gaussian <- function(model.options, knots.previous, knots.positions.can
     # get the new knots
     knots.star <- sort(c(knotsToKeep, p))
     # get the potential locations we could move back to, from the proposed knot positions
-    potentialLocations = knots.positions.candidate[! knots.positions.candidate %in% knots.star]
+    potentialLocations.star = knots.positions.candidate[! knots.positions.candidate %in% knots.star]
     potentialLocations.star <- potentialLocations[potentialLocations > (p - knots.stepSize) & 
                                                     potentialLocations < (p + knots.stepSize)] 
     
