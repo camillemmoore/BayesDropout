@@ -23,7 +23,7 @@
 #####################################################################
 
 
-#' Longitudinal data of HIV in men who are both users and non-users of IV drugs
+#' Longitudinal CD4 count in untreated HIV positive women
 #'
 #' @format A data frame with 53940 rows and 10 variables:
 #' \describe{
@@ -31,9 +31,19 @@
 #'   \item{carat}{weight of the diamond, in carats}
 #'   ...
 #' }
-"hiv"
+"hiv_untreated"
 
-#' A simulated data set based on the Multicenter Aids study
+#' Longitudinal viral load suppression in treated HIV positive women
+#'
+#' @format A data frame with 53940 rows and 10 variables:
+#' \describe{
+#'   \item{price}{price, in US dollars}
+#'   \item{carat}{weight of the diamond, in carats}
+#'   ...
+#' }
+"hiv_treated"
+
+#' A data set based on the Multicenter Aids study
 #' Longitudinal data of HIV in men who are both users and non-users of IV drugs
 #'
 #' @format A data frame with 53940 rows and 10 variables:
@@ -42,7 +52,7 @@
 #'   \item{carat}{weight of the diamond, in carats}
 #'   ...
 #' }
-"macs"
+"hiv_data"
 
 #' A simulated data set based on the Multicenter Aids study
 #' Longitudinal data of HIV in men who are both users and non-users of IV drugs
