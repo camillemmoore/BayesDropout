@@ -265,7 +265,7 @@ bayes.splines.fit <- function(model.options, dist, groups, covariates.var, itera
 #' 
 #' @return list containing updated X, knots, Theta, and boolean indicating if change accepted
 #' 
-addKnot.binary <- function(model.options, knots.previous, outcomes, 
+addKnot.binary <- function(model.options, knots.previous, knots.positions.candidate,outcomes,
                            times.dropout, times.observation, 
                            covariates, X.previous, Theta.previous,
                            Z, alpha, betaCovariates) {
@@ -277,7 +277,7 @@ addKnot.binary <- function(model.options, knots.previous, outcomes,
   eta.null <- model.options$eta.null
   
   # add a knot by randomly selecting a candidate knot
-  candidatesPositions = model.options$knots.positions.candidate[[group.index]]
+  candidatesPositions = knots.positions.candidate
   candidatesPositions = candidatesPositions[! candidatesPositions %in% knots.previous]
   newKnot.value = sample(candidatesPositions, 1)
   knots.star <- sort(c(knots.previous, newKnot.value))
@@ -2079,7 +2079,7 @@ informativeDropout.bayes.splines <- function(data, ids.var, outcomes.var, groups
                                     model.current$sigma.error)
         } else {
           # binary case
-          result = addKnot.binary(model.options, model.current$knots[[group.index]], group.outcomes, 
+          result = addKnot.binary(model.options, model.current$knots[[group.index]], model.options$knots.positions.candidate[[group.index]],group.outcomes, 
                                   group.times.dropout, group.times.observation, 
                                   group.covariates, X[[group.index]], model.current$Theta[[group.index]],
                                   group.Z, group.alpha, model.current$betas.covariates)
