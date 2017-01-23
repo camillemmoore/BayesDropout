@@ -27,7 +27,7 @@ library(devtools)
 ```
 * Install the "informativeDropout" package directly from Github.com
 ```R
-install_github(repo="kreidles/informativeDropout", ref="develop")
+install_github(repo="camillemmoore/informativeDropout", ref="develop")
 ```
 * Load the library
 ```R
